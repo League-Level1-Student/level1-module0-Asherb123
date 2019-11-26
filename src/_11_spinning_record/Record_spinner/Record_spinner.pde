@@ -1,7 +1,15 @@
+import ddf.minim.*;             //at the very top of your sketch
+  Minim minim;        //as a member variable
+  AudioPlayer song;      //as a member variable
+  
+
+
 int angle=90;
 PImage pictureOfRecord;                        //as member variable
 void setup(){
-
+ 
+  minim=new Minim(this);
+  song = minim.loadFile("ccmcman.mp3", 512);   //in the setup method
         size(600,600);                                 //in setup method
         pictureOfRecord= loadImage("record.png");      //in setup method
         
@@ -21,9 +29,11 @@ void draw(){
   rotateImage(pictureOfRecord, angle);
   image(pictureOfRecord, 0, 0);  //in draw method
   angle=angle+1000000;
-  
+  song.play();
 }
-  
+  else{
+    song.pause();
+  }
 }
 
 
